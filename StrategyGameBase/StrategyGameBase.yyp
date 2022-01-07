@@ -1,6 +1,11 @@
 {
   "resources": [
+    {"id":{"name":"GuiTestRectangle","path":"scripts/GuiTestRectangle/GuiTestRectangle.yy",},"order":3,},
+    {"id":{"name":"ObjGame","path":"objects/ObjGame/ObjGame.yy",},"order":0,},
     {"id":{"name":"List","path":"scripts/List/List.yy",},"order":0,},
+    {"id":{"name":"Gui","path":"scripts/Gui/Gui.yy",},"order":0,},
+    {"id":{"name":"GuiState","path":"scripts/GuiState/GuiState.yy",},"order":2,},
+    {"id":{"name":"GuiElement","path":"scripts/GuiElement/GuiElement.yy",},"order":1,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [
@@ -27,6 +32,7 @@
     {"folderPath":"folders/Objects.yy","order":9,"resourceVersion":"1.0","name":"Objects","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Rooms.yy","order":10,"resourceVersion":"1.0","name":"Rooms","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Data Structures.yy","order":12,"resourceVersion":"1.0","name":"Data Structures","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/GUI.yy","order":13,"resourceVersion":"1.0","name":"GUI","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
