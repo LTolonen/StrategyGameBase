@@ -1,11 +1,19 @@
 {
   "resources": [
     {"id":{"name":"GuiTestRectangle","path":"scripts/GuiTestRectangle/GuiTestRectangle.yy",},"order":3,},
+    {"id":{"name":"InputRequest","path":"scripts/InputRequest/InputRequest.yy",},"order":1,},
     {"id":{"name":"ObjGame","path":"objects/ObjGame/ObjGame.yy",},"order":0,},
     {"id":{"name":"List","path":"scripts/List/List.yy",},"order":0,},
+    {"id":{"name":"GameState","path":"scripts/GameState/GameState.yy",},"order":0,},
+    {"id":{"name":"GameEventSubject","path":"scripts/GameEventSubject/GameEventSubject.yy",},"order":1,},
+    {"id":{"name":"Input","path":"scripts/Input/Input.yy",},"order":0,},
     {"id":{"name":"Gui","path":"scripts/Gui/Gui.yy",},"order":0,},
+    {"id":{"name":"GameEvent","path":"scripts/GameEvent/GameEvent.yy",},"order":0,},
     {"id":{"name":"GuiState","path":"scripts/GuiState/GuiState.yy",},"order":2,},
+    {"id":{"name":"InputProvider","path":"scripts/InputProvider/InputProvider.yy",},"order":2,},
+    {"id":{"name":"InputRequestedGameEvent","path":"scripts/InputRequestedGameEvent/InputRequestedGameEvent.yy",},"order":2,},
     {"id":{"name":"GuiElement","path":"scripts/GuiElement/GuiElement.yy",},"order":1,},
+    {"id":{"name":"GameController","path":"scripts/GameController/GameController.yy",},"order":0,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [
@@ -33,6 +41,10 @@
     {"folderPath":"folders/Rooms.yy","order":10,"resourceVersion":"1.0","name":"Rooms","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Data Structures.yy","order":12,"resourceVersion":"1.0","name":"Data Structures","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/GUI.yy","order":13,"resourceVersion":"1.0","name":"GUI","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Game Events.yy","order":15,"resourceVersion":"1.0","name":"Game Events","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Game Control.yy","order":16,"resourceVersion":"1.0","name":"Game Control","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Game Model.yy","order":17,"resourceVersion":"1.0","name":"Game Model","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Game Control/Input.yy","order":1,"resourceVersion":"1.0","name":"Input","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},

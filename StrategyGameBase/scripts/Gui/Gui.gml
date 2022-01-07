@@ -7,8 +7,19 @@ function Gui() constructor
 	selected_element = -1;
 	left_clicked_element = -1;
 	
+	input_provider = new InputProvider();
+	game_event_queue = new List();
+	
+	
 	gui_state = -1;
 	GuiEnterState(new GuiState(self,GUI_STATE_TYPE.NONE));
+	
+	/// @function ObserverOnNotify
+	/// @param game_event
+	static ObserverOnNotify = function(_game_event)
+	{
+		game_event_queue.ListAdd(_game_event);
+	}
 	
 	/// @function GuiAddElement
 	/// @function element
