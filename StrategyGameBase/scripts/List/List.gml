@@ -4,9 +4,9 @@ function List() constructor
 	num_items = 0;
 	items = array_create(0);
 	
-	/// @function ListAddItem
+	/// @function ListAdd
 	/// @param item
-	static ListAddItem = function(_item)
+	static ListAdd = function(_item)
 	{
 		items[num_items++] = _item;
 	}
@@ -75,5 +75,18 @@ function List() constructor
 		_copy.num_items = num_items;
 		array_copy(_copy.items,0,items,0,num_items);
 		return _copy;
+	}
+	
+	/// @function toString
+	static toString = function()
+	{
+		var _string = "";
+		for(var i=0; i<num_items; i++)
+		{
+			if(i > 0)
+				_string += ",";
+			_string += string(items[i]);
+		}
+		return "["+_string+"]";
 	}
 }
