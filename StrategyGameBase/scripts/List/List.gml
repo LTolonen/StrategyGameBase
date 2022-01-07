@@ -70,6 +70,28 @@ function List() constructor
 		items = array_create(0);
 	}
 	
+	/// @function ListPopFirst
+	static ListPopFirst = function()
+	{
+		if(num_items == 0)
+			throw "Attempting to pop first item from an empty list";
+		
+		var _item = items[0];
+		ListRemoveItemAtIndex(0);
+		return _item;
+	}
+	
+	/// @function ListPopLast
+	static ListPopLast = function()
+	{
+		if(num_items == 0)
+			throw "Attempting to pop last item from an empty list";
+		
+		var _item = items[num_items-1];
+		ListRemoveItemAtIndex(num_items-1);
+		return _item;
+	}
+	
 	/// @function ListShuffle
 	static ListShuffle = function()
 	{
