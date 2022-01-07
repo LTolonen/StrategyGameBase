@@ -11,6 +11,15 @@ function List() constructor
 		items[num_items++] = _item;
 	}
 	
+	/// @function ListInsert
+	/// @param item
+	/// @param index
+	static ListInsert = function(_item, _index)
+	{
+		array_insert(items,_index,_item);
+		num_items++;
+	}
+	
 	/// @function ListGet
 	/// @param index
 	static ListGet = function(_index)
