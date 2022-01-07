@@ -18,6 +18,12 @@ function List() constructor
 		return items[_index];
 	}
 	
+	///	@function ListSize
+	static ListSize = function()
+	{
+		return num_items;	
+	}
+	
 	/// @function ListFindItemIndex
 	/// @param item
 	static ListFindItemIndex = function(_item)
