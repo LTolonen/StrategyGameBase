@@ -14,19 +14,11 @@ function TokenText(_text, _font, _colour) constructor
 	TokenTextAddString(_text);
 	
 	halign = fa_left;
-	valign = fa_right;
+	valign = fa_top;
 	max_width = -1;
 	max_height = -1;
 	
 	layout = -1;
-	
-	/// @functiom TokenTextDraw
-	/// @param x
-	/// @param y
-	static TokenTextDraw = function(_x, _y)
-	{
-		
-	}
 	
 	/// @function TokenTextAddString
 	/// @param text
@@ -37,7 +29,7 @@ function TokenText(_text, _font, _colour) constructor
 		if(_text_length == 0)
 			return self;
 		
-		is_formatted = false;
+		layout = -1;
 		
 		//Convert the text to individual tokens
 		var _from_position = 1;
@@ -58,7 +50,10 @@ function TokenText(_text, _font, _colour) constructor
 			if(_segment_length > 0)
 			{
 				var _segment = string_copy(_text,_from_position,_segment_length);
-				TokenTextGetCurrentLine().ListAdd(new StringToken(_segment,_colour,font));
+				var _token_colour = _colour;
+				if(_token_colour == -1)
+					_token_colour = colour;
+				TokenTextGetCurrentLine().ListAdd(new StringToken(_segment,_token_colour,font));
 			}
 			
 			if(_is_space)
@@ -90,7 +85,34 @@ function TokenText(_text, _font, _colour) constructor
 		
 		return lines.ListGet(_num_lines-1);
 	}
+	
+	/// @function TokenTextGetLayout
+	static TokenTextGetLayout = function()
+	{
+		if(layout != -1)
+			return layout;
+		
+		layout = new TokenTextLayout(self);
+		return layout;
+	}
+	
+	/// @function TokenTextSetMaxSize
+	/// @param [max_width]
+	/// @param [max_height]
+	static TokenTextSetMaxSize = function(_max_width = -1, _max_height = -1)
+	{
+		if(max_width != _max_width || max_height != _max_height)
+			layout = -1;
+		max_width = _max_width;
+		max_height = _max_height;
+	}
+	
+	/// @function TokenTextDraw
+	/// @param x
+	/// @param y
+	static TokenTextDraw = function(_x,_y)
+	{
+		var _layout = TokenTextGetLayout();
+		_layout.TokenTextLayoutDraw(_x,_y);
+	}
 }
-
-var _token_text = new TokenText("\n abc def ghi\njkl",FontVector7,c_white);
-var  i=0;
