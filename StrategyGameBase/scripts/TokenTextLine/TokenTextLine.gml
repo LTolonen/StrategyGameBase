@@ -29,7 +29,7 @@ function TokenTextLine(_line_height, _max_width, _y_offset) constructor
 		token_positions.ListAdd({
 			token : _token,
 			x_offset : width,
-			y_offset : 0
+			y_offset : (height - _token.height) div 2
 		});
 		width += _token.width;
 	}

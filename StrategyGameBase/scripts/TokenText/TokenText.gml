@@ -17,13 +17,14 @@ function TokenText(_text, _font, _colour) constructor
 	valign = fa_top;
 	max_width = -1;
 	max_height = -1;
+	line_separation = 0;
 	
 	layout = -1;
 	
 	/// @function TokenTextAddString
 	/// @param text
 	/// @param [colour]
-	static TokenTextAddString= function(_text, _colour = -1)
+	static TokenTextAddString = function(_text, _colour = -1)
 	{
 		var _text_length = string_length(_text);
 		if(_text_length == 0)
@@ -68,6 +69,17 @@ function TokenText(_text, _font, _colour) constructor
 			
 			_from_position = _to_position+1;
 		}
+	}
+	
+	/// @function TokenTextAddSprite
+	/// @param sprite_index
+	/// @param image_index
+	/// @param [colour]
+	static TokenTextAddSprite = function(_sprite_index, _image_index, _colour = -1)
+	{
+		layout = -1;
+		var _line = TokenTextGetCurrentLine();
+		_line.ListAdd(new SpriteToken(_sprite_index, _image_index, _colour));
 	}
 	
 	/// @function TokenTextGetCurrentLine
@@ -117,6 +129,16 @@ function TokenText(_text, _font, _colour) constructor
 		layout = -1;
 		halign = _halign;
 		valign = _valign;
+	}
+	
+	/// @function TokenTextSetLineSeparation
+	/// @param line_separation
+	static TokenTextSetLineSeparation = function(_line_separation)
+	{
+		if(_line_separation == line_separation)
+			return;
+		layout = -1;
+		line_separation = _line_separation;
 	}
 	
 	/// @function TokenTextDraw

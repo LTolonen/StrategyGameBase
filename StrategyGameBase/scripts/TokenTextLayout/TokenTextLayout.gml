@@ -4,7 +4,7 @@ function TokenTextLayout(_token_text) constructor
 {
 	max_width = _token_text.max_width;
 	max_height = _token_text.max_height;
-	line_height = _token_text.font_height;
+	line_height = _token_text.font_height+_token_text.line_separation;
 	halign = _token_text.halign;
 	valign = _token_text.valign;
 	
