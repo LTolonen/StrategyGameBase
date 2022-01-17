@@ -34,6 +34,21 @@ function TokenTextLine(_line_height, _max_width, _y_offset) constructor
 		width += _token.width;
 	}
 	
+	/// @function TokenTextLineRemoveLastToken
+	static TokenTextLineRemoveLastToken = function()
+	{
+		if(token_positions.ListSize() <= 0)
+			return;
+		var _last_token = token_positions.ListPopLast().token;
+		width -= _last_token.width;
+	}
+	
+	/// @function TokenTextLineGetNumTokens
+	static TokenTextLineGetNumTokens = function()
+	{
+		return token_positions.ListSize();	
+	}
+	
 	/// @function TokenTextLineDraw
 	/// @param x
 	/// @param y

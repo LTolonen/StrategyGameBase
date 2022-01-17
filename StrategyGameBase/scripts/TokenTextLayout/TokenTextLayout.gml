@@ -25,7 +25,10 @@ function TokenTextLayout(_token_text) constructor
 		{
 			var _source_line = _token_text.lines.ListGet(_source_line_index);
 			if(!TokenTextLayoutCanAddLine())
+			{
+				_capacity_reached = true;
 				break;
+			}
 
 			var _current_line = TokenTextLayoutAddLine();
 			for(var i=0; i<_source_line.ListSize(); i++)
@@ -58,6 +61,9 @@ function TokenTextLayout(_token_text) constructor
 			if(_capacity_reached)
 				break;
 		}
+		
+		if(_capacity_reached)
+			TokenTextLayoutAddEllipsis(_token_text.colour,_token_text.font);
 	
 		//Determine the width by taking the width of the widest line
 		for(var _line_index = 0; _line_index<lines.ListSize(); _line_index++)
@@ -101,6 +107,24 @@ function TokenTextLayout(_token_text) constructor
 		lines.ListAdd(_line);
 		height += _line.height;
 		return _line;
+	}
+	
+	/// @function TokenTextLayoutAddEllipsis
+	/// @param colour
+	/// @param font
+	static TokenTextLayoutAddEllipsis = function(_colour, _font)
+	{
+		var _num_lines = lines.ListSize();
+		if(_num_lines <= 0)
+			return;
+		var _ellipsis_token = new StringToken("...",_colour,_font);
+		var _last_line = lines.ListGet(_num_lines-1);
+		while(!_last_line.TokenTextLineCanAddToken(_ellipsis_token) && _last_line.TokenTextLineGetNumTokens() > 0)
+		{
+			_last_line.TokenTextLineRemoveLastToken();
+		}
+		if(_last_line.TokenTextLineCanAddToken(_ellipsis_token))
+			_last_line.TokenTextLineAddToken(_ellipsis_token);
 	}
 	
 	/// @function TokenTextLayoutDraw
