@@ -1,1 +1,1 @@
-row_group.GuiElementResize(irandom(400),irandom(400));
+row_group.GuiElementDestroy();

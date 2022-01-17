@@ -14,6 +14,16 @@ function GuiRowGroup(_gui, _depth, _x, _y, _width, _height) : GuiElement(_gui, _
 	
 	rows = new List();
 	
+	static GuiElementOnDestroy = function()
+	{
+		//Destroy the rows when the row group is destroyed
+		for(var _row_index=0; _row_index<rows.ListSize(); _row_index++)
+		{
+			var _row = rows.ListGet(_row_index);
+			_row.GuiElementDestroy();
+		}
+	}
+	
 	static GuiElementOnResize = function()
 	{
 		GuiRowGroupAlignRows();	
