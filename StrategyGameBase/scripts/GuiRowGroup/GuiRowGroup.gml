@@ -28,7 +28,7 @@ function GuiRowGroup(_gui, _depth, _x, _y, _width, _height) : GuiElement(_gui, _
 	{
 		GuiRowGroupAlignRows();	
 	}
-	static GuiElementOnMove= function()
+	static GuiElementOnMove = function()
 	{
 		GuiRowGroupAlignRows();	
 	}

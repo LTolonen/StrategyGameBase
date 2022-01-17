@@ -1,3 +1,18 @@
+enum PARENT_RELATIONSHIP
+{
+	NONE,
+	ALIGN,
+	FIT
+}
+
+enum CORNER
+{
+	TOP_LEFT = 0,
+	TOP_RIGHT = 1,
+	BOTTOM_LEFT = 2,
+	BOTTOM_RIGHT = 3
+}
+
 /// @function GuiElement
 /// @param gui
 /// @param depth
@@ -23,6 +38,12 @@ function GuiElement(_gui, _depth, _x, _y, _width, _height) constructor
 	padding_v = 0;
 	
 	parent_element = -1;
+	parent_relationship = PARENT_RELATIONSHIP.ALIGN;
+	parent_anchor_corner = CORNER.TOP_LEFT;
+	self_anchor_corner = CORNER.TOP_LEFT;
+	parent_alignment_x_offset = 0;
+	parent_alignment_y_offset = 0;
+	
 	child_elements = new List();
 	
 	gui.GuiAddElement(self);
@@ -85,6 +106,78 @@ function GuiElement(_gui, _depth, _x, _y, _width, _height) constructor
 		
 		if(parent_element != -1)
 			parent_element.child_elements.ListAdd(self);
+			
+		GuiElementAlignToParent();
+	}
+	
+	/// @function GuiElementSetFitToParent
+	static GuiElementSetFitToParent = function()
+	{
+		parent_relationship = PARENT_RELATIONSHIP.FIT;	
+		GuiElementAlignToParent();
+	}
+	
+	/// @function GuiElementSetAlignmentToParent
+	/// @param parent_anchor_corner
+	/// @param self_anchor_corner
+	/// @param [x_offset]
+	/// @param [y_offset]
+	static GuiElementSetAlignmentToParent = function(_parent_anchor_corner, _self_anchor_corner, _x_offset=0, _y_offset=0)
+	{
+		parent_relationship = PARENT_RELATIONSHIP.ALIGN;
+		parent_anchor_corner = _parent_anchor_corner;
+		self_anchor_corner = _self_anchor_corner;
+		parent_alignment_x_offset = _x_offset;
+		parent_alignment_y_offset = _y_offset;
+		GuiElementAlignToParent();
+	}
+	
+	/// @function GuiElementAlignToParent
+	static GuiElementAlignToParent = function()
+	{
+		if(parent_element == -1)
+			return;
+		if(parent_relationship == PARENT_RELATIONSHIP.FIT)
+		{
+			var _x = parent_element.x + parent_element.padding_h;
+			var _y = parent_element.y + parent_element.padding_v;
+			var _w = parent_element.width - parent_element.padding_h * 2;
+			var _h = parent_element.height - parent_element.padding_v * 2;
+			GuiElementMoveTo(_x,_y);
+			GuiElementResize(_w,_h);
+		}
+		else if(parent_relationship == PARENT_RELATIONSHIP.ALIGN)
+		{
+			var _x = parent_element.x+parent_alignment_x_offset;
+			var _y = parent_element.y+parent_alignment_y_offset;
+			switch(parent_anchor_corner)
+			{
+				case CORNER.TOP_RIGHT:
+					_x += parent_element.width;
+					break;
+				case CORNER.BOTTOM_LEFT:
+					_y += parent_element.height;
+					break;
+				case CORNER.BOTTOM_RIGHT:
+					_x += parent_element.width;
+					_y += parent_element.height;
+					break;
+			}
+			switch(self_anchor_corner)
+			{
+				case CORNER.TOP_RIGHT:
+					_x -= width;
+					break;
+				case CORNER.BOTTOM_LEFT:
+					_y -= height;
+					break;
+				case CORNER.BOTTOM_RIGHT:
+					_x -= width;
+					_y -= height;
+					break;	
+			}
+			GuiElementMoveTo(_x,_y);
+		}
 	}
 	
 	/// @function GuiElementSetDepth
@@ -112,6 +205,13 @@ function GuiElement(_gui, _depth, _x, _y, _width, _height) constructor
 		var _previous_y = y;
 		x = _x;
 		y = _y;
+		
+		//Align child elements
+		for(var _child_index=0; _child_index<child_elements.ListSize(); _child_index++)
+		{
+			child_elements.ListGet(_child_index).GuiElementAlignToParent();
+		}
+		
 		if(GuiElementOnMove != -1)
 		{
 			GuiElementOnMove(_previous_x, _previous_y);	
@@ -129,6 +229,13 @@ function GuiElement(_gui, _depth, _x, _y, _width, _height) constructor
 		var _previous_height = height;
 		width = _width;
 		height = _height;
+		
+		//Align child elements
+		for(var _child_index=0; _child_index<child_elements.ListSize(); _child_index++)
+		{
+			child_elements.ListGet(_child_index).GuiElementAlignToParent();
+		}
+		
 		if(GuiElementOnResize != -1)
 		{
 			GuiElementOnResize(_previous_width,_previous_height);	

@@ -13,6 +13,12 @@ row_group.GuiRowGroupAddWeightedRow(1);
 row_group.GuiRowGroupAddWeightedRow(5);
 row_group.GuiRowGroupAlignRows();
 
+rectangle1 = new GuiTestRectangle(gui,0,0,0,10,10,c_red);
+rectangle1.GuiElementSetParent(row_group.GuiRowGroupGetRow(3));
+rectangle1.parent_element.padding_h = 4;
+rectangle1.parent_element.padding_v = 4;
+rectangle1.GuiElementSetFitToParent();
+
 game_controller.GameControllerInit();
 
 token_text = new TokenText("I like writing sample text to test my font alignment system.\nThis bit is on its own line\n",FontVector7,c_yellow);
