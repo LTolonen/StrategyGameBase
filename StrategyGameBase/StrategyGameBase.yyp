@@ -16,6 +16,8 @@
     {"id":{"name":"Token","path":"scripts/Token/Token.yy",},"order":0,},
     {"id":{"name":"SpaceToken","path":"scripts/SpaceToken/SpaceToken.yy",},"order":2,},
     {"id":{"name":"SprIconTest","path":"sprites/SprIconTest/SprIconTest.yy",},"order":0,},
+    {"id":{"name":"GuiRow","path":"scripts/GuiRow/GuiRow.yy",},"order":5,},
+    {"id":{"name":"GuiRowGroup","path":"scripts/GuiRowGroup/GuiRowGroup.yy",},"order":4,},
     {"id":{"name":"font_get_height","path":"scripts/font_get_height/font_get_height.yy",},"order":0,},
     {"id":{"name":"FontVector7","path":"fonts/FontVector7/FontVector7.yy",},"order":0,},
     {"id":{"name":"InputProvider","path":"scripts/InputProvider/InputProvider.yy",},"order":2,},

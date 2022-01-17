@@ -18,6 +18,9 @@ function GuiElement(_gui, _depth, _x, _y, _width, _height) constructor
 	is_visible = true;
 	is_hoverable = false;
 	is_selectable = false;
+
+	padding_h = 0;
+	padding_v = 0;
 	
 	parent_element = -1;
 	child_elements = new List();
@@ -27,7 +30,17 @@ function GuiElement(_gui, _depth, _x, _y, _width, _height) constructor
 	static GuiElementDraw = -1;
 	static GuiElementUpdate = -1;
 	static GuiElementOnDestroy = -1;
-	static GuiElementOnResize = -1;
+	
+	/// @function GuiElementOnMove
+	/// @param previous_x
+	/// @param previous_y
+	static GuiElementOnMove = -1;
+	
+	/// @function GuiElementOnResize
+	/// @param previous_width
+	/// @param previous_height
+	static GuiElementOnResize = -1; 
+	
 	static GuiElementOnClick = -1;
 	static GuiElementOnClickDown = -1;
 	static GuiElementOnHover = -1;
@@ -88,6 +101,39 @@ function GuiElement(_gui, _depth, _x, _y, _width, _height) constructor
 		gui.GuiAddElement(self);
 	}
 	
+	/// @function GuiElementMoveTo
+	/// @param x
+	/// @param y
+	static GuiElementMoveTo = function(_x, _y)
+	{
+		if(_x == x && _y == y)
+			return;
+		var _previous_x = x;
+		var _previous_y = y;
+		x = _x;
+		y = _y;
+		if(GuiElementOnMove != -1)
+		{
+			GuiElementOnMove(_previous_x, _previous_y);	
+		}
+	}
+	
+	/// @function GuiElementResize
+	/// @param width
+	/// @param height
+	static GuiElementResize = function(_width, _height)
+	{
+		if(_width == width && _height == _height)
+			return;
+		var _previous_width = width;
+		var _previous_height = height;
+		width = _width;
+		height = _height;
+		if(GuiElementOnResize != -1)
+		{
+			GuiElementOnResize(_previous_width,_previous_height);	
+		}
+	}
 	
 	/// @function GuiElementIsHovered
 	static GuiElementIsHovered = function()

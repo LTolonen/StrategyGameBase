@@ -4,6 +4,15 @@ game_controller = new GameController();
 gui.input_provider.InputProviderRegister(game_controller);
 game_controller.game_state.GameEventSubjectAddObserver(gui);
 
+row_group = new GuiRowGroup(gui,0,400,20,200,400);
+row_group.GuiRowGroupAddFixedRow(20);
+row_group.GuiRowGroupAddFixedRow(40);
+row_group.GuiRowGroupAddWeightedRow(1);
+row_group.GuiRowGroupAddWeightedRow(2);
+row_group.GuiRowGroupAddWeightedRow(1);
+row_group.GuiRowGroupAddWeightedRow(5);
+row_group.GuiRowGroupAlignRows();
+
 game_controller.GameControllerInit();
 
 token_text = new TokenText("I like writing sample text to test my font alignment system.\nThis bit is on its own line\n",FontVector7,c_yellow);
