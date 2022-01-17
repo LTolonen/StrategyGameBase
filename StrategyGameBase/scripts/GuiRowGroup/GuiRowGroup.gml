@@ -64,4 +64,17 @@ function GuiRowGroup(_gui, _depth, _x, _y, _width, _height) : GuiElement(_gui, _
 		weighting_total += _weighting;
 		return _row;
 	}
+	
+	/// @function GuiRowGroupGetNumRows
+	static GuiRowGroupGetNumRows = function()
+	{
+		return rows.ListSize();	
+	}
+	
+	/// @function GuiRowGroupGetRow
+	/// @param row_index
+	static GuiRowGroupGetRow = function(_row_index)
+	{
+		return rows.ListGet(_row_index);	
+	}
 }
