@@ -13,28 +13,40 @@ function TokenTextLayout(_token_text) constructor
 	width = 0;
 	height = 0;
 	lines = new List();
+	TokenTextLayoutInit(_token_text);
 	
-	var _capacity_reached = false;
-	for(var _source_line_index=0; _source_line_index<_token_text.lines.ListSize(); _source_line_index++)
+	/// @function TokenTextLayoutInit
+	/// @param token_text
+	static TokenTextLayoutInit = function(_token_text)
 	{
-		var _source_line = _token_text.lines.ListGet(_source_line_index);
-		if(!TokenTextLayoutCanAddLine())
-			break;
-
-		var _current_line = TokenTextLayoutAddLine();
-		for(var i=0; i<_source_line.ListSize(); i++)
+		///Fit the tokens to each line
+		var _capacity_reached = false;
+		for(var _source_line_index=0; _source_line_index<_token_text.lines.ListSize(); _source_line_index++)
 		{
-			var _token  = _source_line.ListGet(i);
-			if(_current_line.TokenTextLineCanAddToken(_token))
+			var _source_line = _token_text.lines.ListGet(_source_line_index);
+			if(!TokenTextLayoutCanAddLine())
+				break;
+
+			var _current_line = TokenTextLayoutAddLine();
+			for(var i=0; i<_source_line.ListSize(); i++)
 			{
-				_current_line.TokenTextLineAddToken(_token);	
-			}
-			else if(TokenTextLayoutCanAddLine())
-			{
-				var _current_line = TokenTextLayoutAddLine();
+				var _token  = _source_line.ListGet(i);
 				if(_current_line.TokenTextLineCanAddToken(_token))
 				{
 					_current_line.TokenTextLineAddToken(_token);	
+				}
+				else if(TokenTextLayoutCanAddLine())
+				{
+					var _current_line = TokenTextLayoutAddLine();
+					if(_current_line.TokenTextLineCanAddToken(_token))
+					{
+						_current_line.TokenTextLineAddToken(_token);	
+					}
+					else
+					{
+						_capacity_reached = true;
+						break;
+					}
 				}
 				else
 				{
@@ -42,22 +54,35 @@ function TokenTextLayout(_token_text) constructor
 					break;
 				}
 			}
-			else
-			{
-				_capacity_reached = true;
+		
+			if(_capacity_reached)
 				break;
+		}
+	
+		//Determine the width by taking the width of the widest line
+		for(var _line_index = 0; _line_index<lines.ListSize(); _line_index++)
+		{
+			var _line = lines.ListGet(_line_index);
+			width = max(width,_line.width);
+		}
+		
+		//Alignment
+		if(halign != fa_left)
+		{
+			for(var _line_index = 0; _line_index<lines.ListSize(); _line_index++)
+			{
+				var _line = lines.ListGet(_line_index);
+				if(halign == fa_center)
+					_line.x_offset -= _line.width div 2;
+				else
+					_line.x_offset -= _line.width;
 			}
 		}
 		
-		if(_capacity_reached)
-			break;
-	}
-	
-	//Determine the width by taking the width of the widest line
-	for(var _line_index = 0; _line_index<lines.ListSize(); _line_index++)
-	{
-		var _line = lines.ListGet(_line_index);
-		width = max(width,_line.width);
+		if(valign == fa_middle)
+			y_offset = -(height div 2);
+		else if(valign == fa_bottom)
+			y_offset = -height;
 	}
 	
 	/// @function TokenTextLayoutCanAddLine

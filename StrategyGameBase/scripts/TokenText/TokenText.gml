@@ -107,6 +107,18 @@ function TokenText(_text, _font, _colour) constructor
 		max_height = _max_height;
 	}
 	
+	/// @function TokenTextSetAlignment
+	/// @param halign
+	/// @param valign
+	static TokenTextSetAlignment = function(_halign, _valign)
+	{
+		if(halign == _halign && valign == _valign)
+			return;
+		layout = -1;
+		halign = _halign;
+		valign = _valign;
+	}
+	
 	/// @function TokenTextDraw
 	/// @param x
 	/// @param y

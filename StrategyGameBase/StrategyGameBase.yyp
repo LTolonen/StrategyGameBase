@@ -53,8 +53,8 @@
     {"folderPath":"folders/Game Control.yy","order":16,"resourceVersion":"1.0","name":"Game Control","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Game Model.yy","order":17,"resourceVersion":"1.0","name":"Game Model","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Game Control/Input.yy","order":1,"resourceVersion":"1.0","name":"Input","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Text.yy","order":18,"resourceVersion":"1.0","name":"Text","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Text/Tokens.yy","order":2,"resourceVersion":"1.0","name":"Tokens","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Token Text.yy","order":18,"resourceVersion":"1.0","name":"Token Text","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Token Text/Tokens.yy","order":2,"resourceVersion":"1.0","name":"Tokens","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Utility.yy","order":19,"resourceVersion":"1.0","name":"Utility","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [

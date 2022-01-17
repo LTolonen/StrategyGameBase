@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Text",
-    "path": "folders/Text.yy",
+    "name": "Token Text",
+    "path": "folders/Token Text.yy",
   },
   "resourceVersion": "1.0",
   "name": "TokenText",

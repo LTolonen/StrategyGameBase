@@ -1,3 +1,3 @@
 //gui.GuiDraw();
 
-token_text.TokenTextDraw(50,50);
+token_text.TokenTextDraw(150,150);

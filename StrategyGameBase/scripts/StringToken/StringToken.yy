@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Tokens",
-    "path": "folders/Text/Tokens.yy",
+    "path": "folders/Token Text/Tokens.yy",
   },
   "resourceVersion": "1.0",
   "name": "StringToken",
