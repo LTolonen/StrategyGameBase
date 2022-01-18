@@ -6,7 +6,7 @@
     "path": "folders/GUI/Groups.yy",
   },
   "resourceVersion": "1.0",
-  "name": "GuiRowGroup",
+  "name": "GuiColumnGroup",
   "tags": [],
   "resourceType": "GMScript",
 }

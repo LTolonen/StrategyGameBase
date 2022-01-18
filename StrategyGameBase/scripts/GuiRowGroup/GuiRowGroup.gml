@@ -62,6 +62,7 @@ function GuiRowGroup(_gui, _depth, _x, _y, _width, _height) : GuiElement(_gui, _
 		var _row = new GuiRow(gui,depth,_height,);
 		rows.ListAdd(_row);
 		fixed_height_total += _height;
+		GuiRowGroupAlignRows();
 		return _row;
 	}
 	
@@ -72,6 +73,7 @@ function GuiRowGroup(_gui, _depth, _x, _y, _width, _height) : GuiElement(_gui, _
 		var _row = new GuiRow(gui,depth,,_weighting);
 		rows.ListAdd(_row);
 		weighting_total += _weighting;
+		GuiRowGroupAlignRows();
 		return _row;
 	}
 	

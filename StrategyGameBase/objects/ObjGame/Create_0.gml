@@ -11,13 +11,21 @@ row_group.GuiRowGroupAddWeightedRow(1);
 row_group.GuiRowGroupAddWeightedRow(2);
 row_group.GuiRowGroupAddWeightedRow(1);
 row_group.GuiRowGroupAddWeightedRow(5);
-row_group.GuiRowGroupAlignRows();
 
 rectangle1 = new GuiTestRectangle(gui,0,0,0,10,10,c_red);
 rectangle1.GuiElementSetParent(row_group.GuiRowGroupGetRow(3));
 rectangle1.parent_element.padding_h = 4;
 rectangle1.parent_element.padding_v = 4;
 rectangle1.GuiElementSetFitToParent();
+
+column_group = new GuiColumnGroup(gui,0,20,300,200,200);
+column_group.GuiColumnGroupAddWeightedColumn(1);
+column_group.GuiColumnGroupAddFixedColumn(50);
+column_group.GuiColumnGroupAddWeightedColumn(1);
+
+rectangle2 = new GuiTestRectangle(gui,0,0,0,10,10,c_green);
+rectangle2.GuiElementSetParent(column_group.GuiColumnGroupGetColumn(1));
+rectangle2.GuiElementSetFitToParent();
 
 game_controller.GameControllerInit();
 
