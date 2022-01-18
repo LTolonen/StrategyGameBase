@@ -223,7 +223,7 @@ function GuiElement(_gui, _depth, _x, _y, _width, _height) constructor
 	/// @param height
 	static GuiElementResize = function(_width, _height)
 	{
-		if(_width == width && _height == _height)
+		if(_width == width && _height == height)
 			return;
 		var _previous_width = width;
 		var _previous_height = height;
