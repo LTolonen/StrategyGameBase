@@ -42,3 +42,6 @@ token_text2.TokenTextAddSprite(SprIconTest,1,c_red);
 token_text2.TokenTextSetAlignment(fa_right,fa_middle);
 token_text2.TokenTextSetLineSeparation(8);
 token_text2.TokenTextSetMaxSize(80,40);
+
+gui_text1 = new GuiText(gui,-100,300,450,100,60,token_text2);
+gui_text1.GuiTextSetAlignment(fa_center,fa_middle);

@@ -7,6 +7,7 @@
     {"id":{"name":"GameState","path":"scripts/GameState/GameState.yy",},"order":0,},
     {"id":{"name":"GuiColumn","path":"scripts/GuiColumn/GuiColumn.yy",},"order":3,},
     {"id":{"name":"GameEventSubject","path":"scripts/GameEventSubject/GameEventSubject.yy",},"order":1,},
+    {"id":{"name":"GuiText","path":"scripts/GuiText/GuiText.yy",},"order":5,},
     {"id":{"name":"Input","path":"scripts/Input/Input.yy",},"order":0,},
     {"id":{"name":"GuiColumnGroup","path":"scripts/GuiColumnGroup/GuiColumnGroup.yy",},"order":4,},
     {"id":{"name":"Gui","path":"scripts/Gui/Gui.yy",},"order":0,},
