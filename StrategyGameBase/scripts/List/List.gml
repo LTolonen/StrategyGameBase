@@ -101,7 +101,7 @@ function List() constructor
 			var j = irandom_range(0,i);
 			var _temp_item = items[j];
 			items[i] = items[j];
-			items[j] = _temp;
+			items[j] = _temp_item;
 		}
 	}
 	
