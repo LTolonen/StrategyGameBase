@@ -99,7 +99,7 @@ function List() constructor
 		for(var i=num_items-1; i>=0; i--)
 		{
 			var j = irandom_range(0,i);
-			var _temp_item = items[j];
+			var _temp_item = items[i];
 			items[i] = items[j];
 			items[j] = _temp_item;
 		}
