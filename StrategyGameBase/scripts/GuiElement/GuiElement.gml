@@ -67,7 +67,7 @@ function GuiElement(_gui, _depth, _x, _y, _width, _height) constructor
 	static GuiElementOnHover = -1;
 	static GuiElementOnUnhover = -1;
 	static GuiElementOnDeselect = -1;
-	static GuiElementOnEnterGuiState = array_create(GUI_STATE_TYPE.COUNT,-1);
+	GuiElementOnEnterGuiState = array_create(GUI_STATE_TYPE.COUNT,-1);
 	
 	/// @function GuiElementDestroy
 	static GuiElementDestroy = function()

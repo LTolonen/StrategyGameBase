@@ -167,7 +167,7 @@ function Gui() constructor
 				continue;
 			if(_element.GuiElementOnEnterGuiState[_gui_state.gui_state_type] != -1)
 			{
-				_element.GuiElementOnEnterGuiState(_gui_state);
+				_element.GuiElementOnEnterGuiState[_gui_state.gui_state_type](_gui_state);
 			}
 		}
 	}
