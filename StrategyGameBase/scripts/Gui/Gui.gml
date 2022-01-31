@@ -56,7 +56,7 @@ function Gui() constructor
 	{
 		if(mouse_check_button_released(mb_left))
 		{
-			if(left_clicked_element != -1 && clicked_element.is_active && left_clicked_element.GuiElementOnClick != -1)
+			if(left_clicked_element != -1 && left_clicked_element.is_active && left_clicked_element.GuiElementOnClick != -1)
 			{
 				left_clicked_element.GuiElementOnClick();	
 			}
